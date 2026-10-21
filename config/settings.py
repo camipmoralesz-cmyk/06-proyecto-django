@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
-from pyexpat.errors import messages
+#from pyexpat.errors import messages
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# 1, Registro de aplicaciones 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,7 +56,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
-
+ # 2. Confguracion de Plmatillas  Contet Processors
 TEMPLATES = [
     {   
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# 3. Idioma y Zona horaria
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
 LANGUAGE_CODE = 'es-cl' #| Cambio el idioma a español de Chile
@@ -120,7 +121,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
-
+# 4. Archivos Estaticos (Diseño) y Archivos Multimedia (Subidas)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] #|agregamos esta linea para que busque en la carpeta static el logo y carpetas van en estatic
 STATIC_ROOT = BASE_DIR / 'staticfiles' #|agregamos esta linea para que busque en la carpeta staticfiles
@@ -133,6 +134,7 @@ LOGIN_URL = 'usuarios:login' #|agregamos esta linea para que redirija a la pagin
 LOGIN_REDIRECT_URL = 'catalogo:lista' #|nos va a mandar a la pagina de lista de figuras cuando un usuario se loguee
 LOGOUT_REDIRECT_URL = 'core:inicio'
 
+#6. Mapeo de Mensajes Flahs a claese de Boostrap 5
 MESSAGE_TAGS = {
     messages.ERROR: 'danger', #|agregamos esta linea para que los mensajes de error se muestren en rojo
 }
